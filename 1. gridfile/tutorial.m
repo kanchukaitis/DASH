@@ -104,6 +104,8 @@ grid = gridfile( gridname );
 % This data array does not actually exist, but is an abstraction used to 
 % conceptualize how data values in different files fit together.
 %
+% <See figure: grid-empty.svg>
+%
 % Unique Metadata
 % Each element of each dimension is associated with unique metadata. These
 % metadata values are used to index the values in the N-dimensional grid, 
@@ -111,6 +113,8 @@ grid = gridfile( gridname );
 % As mentioned, gridfile is based on the concept that metadata should be
 % meaningful to the user, so the metadata values for each dimension are 
 % specified by the user of the .grid file.
+%
+% <See figure: grid-metadata.svg>
 %
 % Data Source Files
 % When you create a new .grid file, the N-dimensional array is initially 
@@ -126,6 +130,8 @@ grid = gridfile( gridname );
 % hold the requested data. The .grid file then loads the requested data 
 % from the relevant files and pieces the loaded data together in the 
 % requested format.
+%
+% <See figure: grid-source.svg>
 
 %% Create a new .grid file
 %
