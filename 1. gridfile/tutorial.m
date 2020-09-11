@@ -438,5 +438,5 @@ grid.load(["lat","lon"], [1 5], [6, Inf], [3 4])
 % loading every third element after that. This will also load every fourth
 % longitude element from the fifth element to the end of the dimension.
 % 
-% Nice! That’s the tutorial. You're now ready to try out gridfile with your
+% Nice, that’s the tutorial. You're now ready to try out gridfile with your
 % own data!
