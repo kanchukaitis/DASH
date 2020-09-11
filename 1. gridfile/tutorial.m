@@ -246,10 +246,11 @@ grid.add(type, filename, variable, dimensionOrder, sourceMeta)
 %    dimensionOrder: is the order of the dimensions of the variable in the data source file.
 %    sourceMeta: is the data source file metadata defined above.
 %
-% If the file name includes a path (for example “\Users\filepath\myfile.nc”), 
-% then the matching file is added to the .grid file. If you do not include 
-% a path (for example, “myfile.nc”), then the method will search the Matlab
-% active path for a file with the matching name.
+% If the file name includes a complete file path (for example 
+% "C:\Users\filepath\myfile.nc"), then the matching file is added to the 
+% .grid file. If you do not include a path (for example, "myfile.nc") or 
+% use a partial path (\filepath\myfile.nc), then the method will search the
+% Matlab active path for a file with the matching name.
 %
 % The following is an example of a typical workflow:
 type = 'nc';
@@ -259,12 +260,21 @@ dimensionOrder = ["lon","lat","time"];
 sourceMeta = gridfile.DefineMetadata("lon", lonMeta, "lat", latMeta, "time", timeMeta);
 grid.add(type, filename, variable, dimensionOrder, sourceMeta);
 
-% Important Note: .grid files record the absolute file path of data source 
-% files. If you move or rename data source files after adding them to a 
-% .grid file, see gridfile.renameSources to rename them in the .gridfile.
+% Data source file paths
 %
+% By default, .grid files save the relative path between the .grid file and
+% data source files. This way, you can move saved .grid files and data 
+% sources files to new machines or new directories, so long as you maintain
+% the same relative path. One exception occurs for data source files on a 
+% different drive than the .grid file. In this case, there is no relative 
+% path, so the .grid file stores the absolute path to the data source. If 
+% you would like to move data source files without moving the .grid file or
+% vice versa, see how to update data source file paths. Alternatively, save
+% the absolute file path.
 %
+
 % Non-Regular Grids (Tripolar, Irregular Locations)
+% 
 % Gridfile organizes data using a regular grid; every dimension element is
 % associated with a unique metadata value. However, not all datasets use
 % regular grids. For example, tripolar grids are common in climate models
