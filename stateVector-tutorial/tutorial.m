@@ -590,30 +590,30 @@ sv = sv.weightedMean(variables, ["lon", "lat", weights]);
 %% Build a state vector ensemble
 %
 % Once the state vector design template is finished, you are ready to build
-% an ensemble. Use the "buildEnsemble" command and provide the desired 
+% an ensemble. Use the "build" command and provide the desired 
 % number of ensemble members. For example
-X = sv.buildEnsemble(150);
+X = sv.build(150);
 
 %will build and return a state vector ensemble with 150 ensemble members.
 
 % Select ensemble members sequentially
 %
-% By default, "buildEnsemble" selects ensemble members at random from the 
+% By default, "build" selects ensemble members at random from the 
 % reference indices. For example, say that the time dimension for monthly 
 % data over 100 years. If we make time an ensemble dimension and use the 
 % first month of each year as the reference indices
 sv = sv.design(variables, 'time', 'ensemble', 1:12:1200);
 
 % then
-X = sv.buildEnsemble(50)
+X = sv.build(50);
 
 % will build an ensemble with 50 ensemble members and each ensemble member 
 % will be selected from the first month of a random year.
 %
-% However, you can also require "buildEnsemble" to select ensemble members 
+% However, you can also require "build" to select ensemble members 
 % sequentially from the reference indices by setting the second input to 
 % false. Using the previous example:
-X = sv.buildEnsemble(50, false);
+X = sv.build(50, false);
 
 % will build an ensemble with 50 ensemble members. The first ensemble
 % member will be the first month of year 1. The second ensemble member will
